@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const {conenction} = require("./db/db");
 const {userController} = require("./routes/user.routes");
 const {taskController} = require("./routes/task.routes");
@@ -9,6 +10,8 @@ const app = express();
 require('dotenv').config();
 
 app.use(express.json());
+
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("Home page");
