@@ -4,7 +4,7 @@ const taskSchema = mongoose.Schema({
     title: {type: String, required: true},
     description: {type: String, required: true},
     completed: {type: Boolean},
-    userId: {type: String, required: true}
+    userId: {type: String}
 });
 
 const TaskModel = mongoose.model("task",taskSchema);
