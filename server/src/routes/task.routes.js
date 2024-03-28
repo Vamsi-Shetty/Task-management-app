@@ -16,10 +16,10 @@ taskController.post("/create", async (req, res) => {
     const task = new TaskModel({title, description, completed: false, userId});
     try {
         await task.save();
-        res.send("Task created successfully");
+        res.json({message: "Task created successfully"});
     } catch (error) {
         console.log(error)
-        res.send("Something went wrong");
+        res.json({message :"Something went wrong"});
     }
 });
 
@@ -27,10 +27,10 @@ taskController.patch("/edit/:taskId", async (req, res) => {
     const {taskId} = req.params;
     const updateTask = await TaskModel.findOneAndUpdate({_id: taskId, userId: req.body.userId}, req.body);
     if(updateTask) {
-        res.send("Task updated");
+        res.json({message:"Task updated"});
     }
     else {
-        res.send("Unable to update");
+        res.json({message:"Unable to update"});
     }
 });
 
@@ -38,10 +38,10 @@ taskController.delete("/delete/:taskId", async (req, res) => {
     const {taskId} = req.params;
     const deleteTask = await TaskModel.findOneAndDelete({_id: taskId, userId: req.body.userId});
     if(deleteTask) {
-        res.send("Task Deleted");
+        res.json({message:"Task Deleted"});
     }
     else {
-        res.send("Unable to delete");
+        res.json({message:"Unable to delete"});
     }
 });
 
