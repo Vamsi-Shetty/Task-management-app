@@ -7,19 +7,24 @@ const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const userDetails = {name, email, password};
-        fetch(`https://task-management-app-cvk5.onrender.com/user/signup`, {
-            method:"POST",
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userDetails)
-        })
-        .then((res) => res.json())
-        .then((res) => console.log(res))
-        .catch((error) => console.log(error))
+        try {
+            const postData = await fetch(`https://task-management-app-cvk5.onrender.com/user/signup`, {
+                                        method:"POST",
+                                        headers:{
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify(userDetails)
+                                    })
+            const json =await postData.json();
+            alert("Signup Successful!");
+            console.log(json);
+        } catch (error) {
+            console.log(error);
+            alert("Signup Failed!");
+        }
     }
 
   return (
