@@ -10,11 +10,11 @@ userController.post("/signup", (req, res) => {
     const {name, email, password} = req.body;
     bcrypt.hash(password, 6, async function(err, hash) {
         if(err) {
-            res.send("Something Went wrong, Please Try after sometime");
+            res.json({message:"Something Went wrong, Please Try after sometime"});
         }
         const user = new UserModel({name, email, password : hash});
         await user.save();
-        res.send("Signup sucessfull");
+        res.json({message: "Signup sucessfull"});
     });
 })
 
@@ -24,14 +24,14 @@ userController.post("/login", async (req, res) => {
     const hash = user.password;
     bcrypt.compare(password, hash, function(err, result) {
         if(err) {
-            res.send("Something went wrong. Try again later!");
+            res.json({message :"Something went wrong. Try again later!"});
         }
         if(result) {
             const token = jwt.sign({ userId : user._id }, process.env.JSON_KEY);
             res.send({message : "Login Sucessful", token});
         }
         else {
-            res.send("Invalid Credentials!");
+            res.json({message:"Invalid Credentials!"});
         }
     });
 })
