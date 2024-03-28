@@ -8,7 +8,7 @@ const authentication = (req, res, next) => {
     const token = req.headers.authorization.split(" ")[1];
     jwt.verify(token, process.env.JSON_KEY, function(err, decoded) {
         if(err) {
-            res.send("Please Login")
+            res.send("Please Login" + err)
         }
         else {
             req.body.userId = decoded.userId;
