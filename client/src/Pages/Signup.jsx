@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
 
 const Signup = () => {
 
@@ -31,8 +30,8 @@ const Signup = () => {
   return (
     <div className='flex flex-col'>
         <div className='text-center'>
-            <h1>Create Account</h1>
-            <h4>Please signup to use our services.</h4>
+            <h1 className='text-3xl font-bold'>Create Account</h1>
+            <h4>Please Signup to use our services.</h4>
         </div>
         <div className='flex items-center justify-center align-middle border-2 rounded-md mx-auto my-6 p-5'>
             <form onSubmit={handleSubmit}>
@@ -57,7 +56,7 @@ const Signup = () => {
             </form>
         </div>
         <div className='text-center'>
-            <h2>Already Signed up? {" "}
+            <h2>Already have an account? {" "}
                 <Link to='/login'
                  className='underline font-bold'
                  >Log In</Link>

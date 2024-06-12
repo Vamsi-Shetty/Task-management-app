@@ -31,7 +31,7 @@ const Login = () => {
   return (
     <div className='flex flex-col'>
         <div className='text-center'>
-            <h1>Login</h1>
+            <h1 className='text-3xl font-bold'>Login</h1>
             <h4>Please Login to use our services.</h4>
         </div>
         <div className='flex items-center justify-center align-middle border-2 rounded-md mx-auto my-6 p-5'>
@@ -50,7 +50,7 @@ const Login = () => {
             </form>
         </div>
         <div className='text-center my-1'>
-            <h1>Create Account. {" "}
+            <h1>Doesn't have an account? {" "}
                 <Link to='/signup'
                  className='font-bold underline'
                 >Signup</Link>
