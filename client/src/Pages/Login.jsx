@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -28,17 +29,32 @@ const Login = () => {
     }
 
   return (
-    <div>
-        <div className='intro-div'>
+    <div className='flex flex-col'>
+        <div className='text-center'>
             <h1>Login</h1>
             <h4>Please Login to use our services.</h4>
         </div>
-        <div className='signup-div'>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder='Enter Email Id' onChange={(e) => setEmail(e.target.value)}/><br />
-                <input type="text" placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)}/><br />
-                <button type="submit">Login</button>
+        <div className='flex items-center justify-center align-middle border-2 rounded-md mx-auto my-6 p-5'>
+            <form onSubmit={handleSubmit} className=''>
+                <label htmlFor="">Email</label><br />
+                <input
+                 className='border-[1px]  rounded-md my-1 p-1'
+                 type="text" placeholder='Enter Email Id' onChange={(e) => setEmail(e.target.value)}/><br />
+                <label htmlFor="">Password</label><br />
+                <input
+                 className='border-[1px] rounded-md my-1 p-1'
+                 type="text" placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)}/><br />
+                <button
+                 className='w-full bg-black text-white border-2 rounded-md py-2'
+                 type="submit">Login</button>
             </form>
+        </div>
+        <div className='text-center my-1'>
+            <h1>Create Account. {" "}
+                <Link to='/signup'
+                 className='font-bold underline'
+                >Signup</Link>
+            </h1>
         </div>
     </div>
   )
