@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
+import TaskSingle from '../components/TaskSingle';
 
 const Tasks = () => {
 
@@ -90,13 +91,14 @@ const Tasks = () => {
   },[tasks])
 
   return (
-    <div>
+    <div className='text-center'>
       <h1>Tasks</h1>
       <div className='create-task-div'>
         <input type="text" placeholder='Enter Title' onChange={(e) => setTitle(e.target.value)}/>
         <input type="text" placeholder='Enter Description' onChange={(e) => setDescription(e.target.value)}/>
         <button onClick={handleCreate}>Create Task</button>
       </div>
+      <TaskSingle/>
       <div className='display-tasks-div'>
         {!tasks ? "No Tasks found" : 
           <div>
